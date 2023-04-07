@@ -1,0 +1,43 @@
+<div class="main">
+  <div class="title">
+    <h1>Today's Cryptocurrency Prices</h1>
+    <h1></h1>
+  </div>
+  <div class="coin-table">
+    <table class="table-align">
+      <tr>
+        <td class="table-title title-align">#</td>
+        <td class="table-title title-align">Name</td>
+        <td class="table-title">Price</td>
+        <td class="table-title">24h%</td>
+        <td class="table-title">MarketCap</td>
+        <td class="table-title">Volume(Total)</td>
+      </tr>
+      <tr *ngFor="let coin of coins">
+        <td class="title-align">{{ coin.market_cap_rank }}</td>
+        <td class="title-align" style="font-weight: bold">
+          <a href="">
+            <img src="{{ coin.image }}" class="coin-image" />
+            {{ coin.name }}
+            <span class="coin-sym"> {{ coin.symbol.toUpperCase() }}</span></a
+          >
+        </td>
+        <td>{{ coin.current_price }}</td>
+        <td
+          *ngIf="coin.price_change_percentage_24h >= 0"
+          style="color: #00c537"
+        >
+          {{ coin.price_change_percentage_24h }}
+        </td>
+        <td *ngIf="coin.price_change_percentage_24h < 0" style="color: red">
+          {{ coin.price_change_percentage_24h }}
+        </td>
+        <td>{{ coin.market_cap }}</td>
+        <td>{{ coin.total_volume }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="pages">
+    <p class="page-number" *ngFor="let num of numbers" (click)="loadCoins(num)" [routerLink]="['/']" [queryParams]="{page:num}">{{ num }}</p>
+  </div>
+</div>
