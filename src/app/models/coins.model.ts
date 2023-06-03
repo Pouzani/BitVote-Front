@@ -9,3 +9,4 @@ export interface coin {
   market_cap_rank: number;
   total_volume: number;
 }
+

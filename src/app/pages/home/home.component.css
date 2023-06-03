@@ -45,7 +45,8 @@ td {
 .coin-image {
   vertical-align: middle;
   width: 40px;
-  height: auto;
+  height: 40px;
+  border-radius: 100%;
 }
 
 .pages{
@@ -56,4 +57,16 @@ td {
 .page-number{
   margin: 10px;
   cursor: pointer;
+}
+
+.flex{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.skeleton-text{
+  width: 50%;
+  height: .7em;
 }

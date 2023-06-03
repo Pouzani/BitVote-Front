@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <div class="brand">
+    <h1>
+      <fa-icon [icon]="faBitcoin" class="bitcoin-icon"></fa-icon>itVote
+    </h1>
+  </div>
+  <div class="navbar-item">
+    <a routerLink="/"><h3>CRYPTOCURRENCIES</h3></a>
+    <a href="#"><h3>FORUM</h3></a>
+    <a href="#"><h3>ABOUT US</h3></a>
+    <a *ngIf="!user" routerLink="/login"
+      ><fa-icon [icon]="faRightToBracket" class="login-icon"></fa-icon
+    ></a>
+    <a *ngIf="user" routerLink="/profile"
+      ><h3>{{ user.username }}</h3></a>
+  </div>
+</nav>
+

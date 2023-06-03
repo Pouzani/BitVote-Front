@@ -1,0 +1,41 @@
+<app-loading [loadingState]="loadingState"></app-loading>
+<div class="login">
+  <h1>Log in</h1>
+  <p *ngIf="error" style="color:red" >{{ error }}</p>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <div class="login-container">
+      <div class="email-input">
+        <label for="email">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter your username"
+          ngModel
+          [className]="errorClass"
+          required
+        />
+      </div>
+      <div class="email-input">
+        <div class="pass-label">
+          <label for="password">Password</label>
+          <a href="#">Forgot password?</a>
+        </div>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          [className]="errorClass"
+          ngModel
+          required
+        />
+      </div>
+      <div class="login-btn-container">
+        <button href="#" type="submit" class="login-button">LOGIN</button>
+        <br />
+        <a href="signup.html">Not a member? Sign up here!</a>
+      </div>
+    </div>
+  </form>
+</div>

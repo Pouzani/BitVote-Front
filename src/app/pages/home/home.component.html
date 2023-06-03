@@ -4,7 +4,7 @@
     <h1></h1>
   </div>
   <div class="coin-table">
-    <table class="table-align">
+    <table class="table-align" *ngIf="!error">
       <tr>
         <td class="table-title title-align">#</td>
         <td class="table-title title-align">Name</td>
@@ -13,11 +13,26 @@
         <td class="table-title">MarketCap</td>
         <td class="table-title">Volume(Total)</td>
       </tr>
+      <tr *ngFor="let num of nums">
+        <td class="title-align"><div class="skeleton skeleton-text"></div></td>
+        <td class="title-align" style="font-weight: bold">
+          <a href="" class="flex">
+            <div class="coin-image skeleton"></div>
+            <div class="skeleton skeleton-text"></div>
+            <span class="coin-sym"></span
+          ></a>
+        </td>
+        <td><div class="skeleton skeleton-text"></div></td>
+        <td><div class="skeleton skeleton-text"></div></td>
+        <td><div class="skeleton skeleton-text"></div></td>
+        <td><div class="skeleton skeleton-text"></div></td>
+        <td><div class="skeleton skeleton-text"></div></td>
+      </tr>
       <tr *ngFor="let coin of coins">
         <td class="title-align">{{ coin.market_cap_rank }}</td>
         <td class="title-align" style="font-weight: bold">
-          <a href="">
-            <img src="{{ coin.image }}" class="coin-image" />
+          <a href="" class="flex">
+            <img src="{{ coin.image }}" class="coin-image skeleton" />
             {{ coin.name }}
             <span class="coin-sym"> {{ coin.symbol.toUpperCase() }}</span></a
           >
@@ -36,8 +51,19 @@
         <td>{{ coin.total_volume }}</td>
       </tr>
     </table>
+    <div class="error" *ngIf="error">
+      <h2>{{ error }}</h2>
+    </div>
   </div>
-  <div class="pages">
-    <p class="page-number" *ngFor="let num of numbers" (click)="loadCoins(num)" [routerLink]="['/']" [queryParams]="{page:num}">{{ num }}</p>
+  <div class="pages" *ngIf="!error">
+    <p
+      class="page-number"
+      *ngFor="let num of numbers"
+      (click)="loadCoins(num)"
+      [routerLink]="['/']"
+      [queryParams]="{ page: num }"
+    >
+      {{ num }}
+    </p>
   </div>
 </div>
